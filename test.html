@@ -1,0 +1,53 @@
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/p5@1/lib/addons/p5.sound.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+<script src="https://p5play.org/v3/planck.min.js"></script>
+<script src="https://p5play.org/v3/p5play.js"></script>
+</head>
+<body>
+<script>
+
+let myshape, myshape2, myshape3;
+
+function setup() {
+	new Canvas(400, 400); 
+  myshape = new Sprite();
+  myshape.width = 75;
+  myshape.height = 50;
+  myshape.x = 175
+  myshape.y = 70;
+  myshape.color = 'pink';
+  myshape.stroke = 'red';
+
+  	world.gravity.y = 10;
+  
+  myshape2 = new Sprite();
+  myshape2.width=100;
+  myshape2.collider = "kinematic"; //change to kinematic (not effected by gravity, but can be programmed to move)
+  myshape2.velocity.x = -1;
+
+  
+  myshape3 = new Sprite(25, 70, 50, 'static');  // x,y,diameter
+
+  
+}
+
+function draw() {
+  clear()
+
+  myshape3.x = mouse.x;
+myshape3.y = mouse.y;
+  
+if (mouse.presses()) {
+new Sprite(mouse.x, mouse.y, 25,25);
+  }
+  
+if (myshape3.collides(myshape)) {
+		myshape.color="black";
+	}
+
+}
+  </script>
+</body>
+</html>
